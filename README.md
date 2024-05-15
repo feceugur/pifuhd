@@ -58,6 +58,26 @@ sh ./scripts/demo.sh
 The resulting obj files and rendering will be saved in `./results`. You may use meshlab (http://www.meshlab.net/) to visualize the 3D mesh output (obj file). 
 
 
+
+## Testing with [lightweight-human-pose-estimation-3d-demo.pytorch](https://github.com/Daniil-Osokin/lightweight-human-pose-estimation-3d-demo.pytorch) (without OpenPose)
+
+1. clone lightweight-human-pose-estimation-3d-demo.pytorch and go to inside of the file
+```
+git clone https://github.com/feceugur/lightweight-human-pose-estimation.pytorch.git
+cd lightweight-human-pose-estimation.pytorch
+```
+
+2. run the following script to get joints for each image for testing. Make sure to set `input_path` to path of your test image in pifuhd 
+```
+python run_pose_estimation.py ../pifuhd/sample_images/your_test.png
+```
+
+3. go to pifuhd file and run the following script to run reconstruction code. Make sure to set `--input_path` to `path_of_images`
+```
+cd ../pifuhd
+python -m apps.simple_test -r 256 --use_rect -i sample_images/
+```
+
 ## Testing
 
 1. run the following script to get joints for each image for testing (joints are used for image cropping only.). Make sure you correctly set the location of OpenPose binary. Alternatively [colab demo](https://colab.research.google.com/drive/11z58bl3meSzo6kFqkahMa35G5jmh2Wgt) provides more light-weight cropping rectange estimation without requiring openpose.
